@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Employee</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Update Employee Details</h2>
+        <form method="POST">
+            <input type="text" id="name" name="name" placeholder="Add New Name" value="{{ employee.name }}" required>
+            <br>
+            <input type="email" id="email" name="email" placeholder="Add New Email" value="{{ employee.email }}" required>
+            <br>
+            <input type="text" id="position" name="position" placeholder="Update Position" value="{{ employee.position }}" required>
+            <br>
+            <button type="submit">Update Employee</button>
+        </form>
+        <br>
+        <a href="{{ url_for('index') }}">⬅ Back to Employee List</a>
+    </div>
+</body>
+</html>

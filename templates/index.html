@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Add New Employee</h2>
+        <form action="/add_employee" method="POST">
+            <input type="text" id="name" name="name" placeholder="Full Name" required>
+            <br>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <br>
+            <input type="text" id="position" name="position" placeholder="Position" required>
+            <br>
+            <span style="display: flex; justify-content: end;">
+            <button type="submit">Add Employee</button>
+            </span>
+        </form>
+    </div>
+
+    <div class="container">
+        <h2>Employee List</h2>
+        <table border="1" cellpadding="8">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Position</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for employee in employees %}
+                <tr>
+                    <td>{{ employee.id }}</td>
+                    <td>{{ employee.name }}</td>
+                    <td>{{ employee.email }}</td>
+                    <td>{{ employee.position }}</td>
+                    <td>
+                        <a style="background-color: yellow; color: black;" href="/update/{{ employee.id }}">Update</a>
+                        <a style="background-color: red;" href="/delete/{{ employee.id }}" onclick="return confirm('Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
